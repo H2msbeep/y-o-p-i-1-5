@@ -10,15 +10,7 @@ input.onButtonPressed(Button.B, function () {
         MugenLock = 3
     }
 })
-let European = 0
-let Mivar1 = 0
-let JikanLock = 0
-let MugenLock = 0
-led.setBrightness(69)
-let C1 = 24
-let C2 = 0
-MugenLock = 1
-basic.forever(function () {
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     if (MugenLock == 1) {
         basic.showString("J")
         if (input.logoIsPressed()) {
@@ -85,16 +77,17 @@ basic.forever(function () {
             basic.showString("" + C1 + ":" + C2)
         }
     } else if (MugenLock == 2) {
+        basic.showString("K")
         while (MugenLock == 2) {
-            basic.showString("K")
             if (input.logoIsPressed()) {
                 basic.clearScreen()
                 basic.showString("" + (input.compassHeading()))
+                basic.showString("K")
             }
         }
     } else if (MugenLock == 3) {
+        basic.showString("T")
         while (MugenLock == 3) {
-            basic.showString("T")
             if (input.logoIsPressed()) {
                 basic.clearScreen()
                 basic.showString("" + (input.temperature()))
@@ -102,3 +95,13 @@ basic.forever(function () {
         }
     }
 })
+let European = 0
+let Mivar1 = 0
+let JikanLock = 0
+let MugenLock = 0
+let C2 = 0
+let C1 = 0
+led.setBrightness(69)
+C1 = 24
+C2 = 0
+MugenLock = 1

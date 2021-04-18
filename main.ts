@@ -15,14 +15,12 @@ let Mivar1 = 0
 let JikanLock = 0
 let MugenLock = 0
 led.setBrightness(69)
-music.playMelody("B A G A G F A C5 ", 120)
-basic.showString("YOPI 15")
 let C1 = 24
 let C2 = 0
 MugenLock = 1
 basic.forever(function () {
     if (MugenLock == 1) {
-        basic.showString("Clock")
+        basic.showString("J")
         if (input.logoIsPressed()) {
             if (JikanLock == 0) {
                 JikanLock = 1
@@ -87,14 +85,20 @@ basic.forever(function () {
             basic.showString("" + C1 + ":" + C2)
         }
     } else if (MugenLock == 2) {
-        basic.showString("Compass")
-        if (input.logoIsPressed()) {
-            basic.showString("" + (input.compassHeading()))
+        while (MugenLock == 2) {
+            basic.showString("K")
+            if (input.logoIsPressed()) {
+                basic.clearScreen()
+                basic.showString("" + (input.compassHeading()))
+            }
         }
     } else if (MugenLock == 3) {
-        basic.showString("Thermometer")
-        if (input.logoIsPressed()) {
-            basic.showString("" + (input.temperature()))
+        while (MugenLock == 3) {
+            basic.showString("T")
+            if (input.logoIsPressed()) {
+                basic.clearScreen()
+                basic.showString("" + (input.temperature()))
+            }
         }
     }
 })

@@ -82,7 +82,6 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
             Mivar1 = input.runningTime()
             JikanLock = 1
             basic.clearScreen()
-            basic.showString("" + C1 + ":" + C2)
         }
         European = Math.idiv(input.runningTime() - Mivar1, 60000)
         for (let index = 0; index < European - American; index++) {
@@ -101,10 +100,12 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         basic.showString("K")
         basic.clearScreen()
         basic.showString("" + (input.compassHeading()))
+        basic.showString("K")
     } else if (MugenLock == 3) {
         basic.showString("T")
         basic.clearScreen()
         basic.showString("" + (input.temperature()))
+        basic.showString("T")
     }
 })
 let American = 0

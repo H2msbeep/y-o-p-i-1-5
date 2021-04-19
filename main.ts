@@ -1,27 +1,36 @@
 input.onButtonPressed(Button.A, function () {
     MugenLock += 1
-    if (MugenLock == 4) {
+    if (MugenLock == 5) {
         MugenLock = 1
     }
     if (MugenLock == 1) {
         basic.showString("J")
     } else if (MugenLock == 2) {
         basic.showString("K")
-    } else {
+    } else if (MugenLock == 3) {
         basic.showString("T")
+    } else {
+        basic.showString("D")
     }
 })
 input.onButtonPressed(Button.B, function () {
     MugenLock += -1
     if (MugenLock == 0) {
-        MugenLock = 3
+        MugenLock = 4
     }
     if (MugenLock == 1) {
         basic.showString("J")
     } else if (MugenLock == 2) {
         basic.showString("K")
-    } else {
+    } else if (MugenLock == 3) {
         basic.showString("T")
+    } else {
+        basic.showString("D")
+    }
+})
+input.onGesture(Gesture.Shake, function () {
+    if (MugenLock == 4) {
+        basic.showNumber(randint(1, 6))
     }
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {

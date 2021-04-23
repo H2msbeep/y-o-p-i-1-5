@@ -1,6 +1,7 @@
 input.onButtonPressed(Button.A, function () {
+    led.stopAnimation()
     MugenLock += 1
-    if (MugenLock == 5) {
+    if (MugenLock == 6) {
         MugenLock = 1
     }
     if (MugenLock == 1) {
@@ -9,14 +10,23 @@ input.onButtonPressed(Button.A, function () {
         basic.showString("K")
     } else if (MugenLock == 3) {
         basic.showString("T")
-    } else {
+    } else if (MugenLock == 4) {
         basic.showString("D")
+    } else {
+        basic.showString("S")
+    }
+})
+input.onSound(DetectedSound.Loud, function () {
+    if (MugenLock == 5) {
+        music.playTone(988, music.beat(BeatFraction.Half))
+        music.playTone(988, music.beat(BeatFraction.Half))
     }
 })
 input.onButtonPressed(Button.B, function () {
+    led.stopAnimation()
     MugenLock += -1
     if (MugenLock == 0) {
-        MugenLock = 4
+        MugenLock = 5
     }
     if (MugenLock == 1) {
         basic.showString("J")
@@ -24,13 +34,18 @@ input.onButtonPressed(Button.B, function () {
         basic.showString("K")
     } else if (MugenLock == 3) {
         basic.showString("T")
-    } else {
+    } else if (MugenLock == 4) {
         basic.showString("D")
+    } else {
+        basic.showString("S")
     }
 })
 input.onGesture(Gesture.Shake, function () {
     if (MugenLock == 4) {
+        basic.clearScreen()
         basic.showNumber(randint(1, 6))
+        basic.pause(500)
+        basic.showString(".")
     }
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
@@ -95,16 +110,14 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
             C2 += 1
         }
         American = European
-        basic.showString("" + C1 + ":" + C2)
+        basic.showString("" + C1 + ":" + C2 + "Clock")
     } else if (MugenLock == 2) {
-        basic.showString("K")
         basic.clearScreen()
-        basic.showString("" + (input.compassHeading()))
-        basic.showString("K")
+        basic.showString("" + input.compassHeading() + "Compass" + input.compassHeading())
+        basic.showString("C")
     } else if (MugenLock == 3) {
-        basic.showString("T")
         basic.clearScreen()
-        basic.showString("" + (input.temperature()))
+        basic.showString("" + input.temperature() + "Temperature(Celsius)" + input.temperature())
         basic.showString("T")
     }
 })

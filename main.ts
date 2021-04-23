@@ -5,18 +5,24 @@ input.onButtonPressed(Button.A, function () {
         MugenLock = 1
     }
     if (MugenLock == 1) {
-        basic.showString("J")
+        Gamen_list[0] = "M"
+        basic.showString("M")
     } else if (MugenLock == 2) {
-        basic.showString("K")
+        Gamen_list[0] = "C"
+        basic.showString("C")
     } else if (MugenLock == 3) {
+        Gamen_list[0] = "T"
         basic.showString("T")
     } else if (MugenLock == 4) {
+        Gamen_list[0] = "D"
         basic.showString("D")
     } else {
+        Gamen_list[0] = "S"
         basic.showString("S")
     }
 })
 input.onSound(DetectedSound.Loud, function () {
+    // Sound
     if (MugenLock == 5) {
         music.playTone(988, music.beat(BeatFraction.Half))
         music.playTone(988, music.beat(BeatFraction.Half))
@@ -29,18 +35,24 @@ input.onButtonPressed(Button.B, function () {
         MugenLock = 5
     }
     if (MugenLock == 1) {
-        basic.showString("J")
+        Gamen_list[0] = "M"
+        basic.showString("M")
     } else if (MugenLock == 2) {
-        basic.showString("K")
+        Gamen_list[0] = "C"
+        basic.showString("C")
     } else if (MugenLock == 3) {
+        Gamen_list[0] = "T"
         basic.showString("T")
     } else if (MugenLock == 4) {
+        Gamen_list[0] = "D"
         basic.showString("D")
     } else {
+        Gamen_list[0] = "S"
         basic.showString("S")
     }
 })
 input.onGesture(Gesture.Shake, function () {
+    // Dice
     if (MugenLock == 4) {
         basic.clearScreen()
         basic.showNumber(randint(1, 6))
@@ -50,7 +62,9 @@ input.onGesture(Gesture.Shake, function () {
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     if (MugenLock == 1) {
-        basic.showString("J")
+        // Clock
+        basic.showString("" + (Gamen_list[0]))
+        // Clock Setter
         if (JikanLock == 0) {
             basic.showString("Set the clock")
             basic.showNumber(C1)
@@ -99,6 +113,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
             basic.clearScreen()
         }
         European = Math.idiv(input.runningTime() - Mivar1, 60000)
+        // Check
         for (let index = 0; index < European - American; index++) {
             if (C2 == 59) {
                 C2 = -1
@@ -112,19 +127,22 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         American = European
         basic.showString("" + C1 + ":" + C2 + "Clock")
     } else if (MugenLock == 2) {
+        // Compass
         basic.clearScreen()
         basic.showString("" + input.compassHeading() + "Compass" + input.compassHeading())
-        basic.showString("C")
+        basic.showString("" + (Gamen_list[0]))
     } else if (MugenLock == 3) {
+        // Temp
         basic.clearScreen()
         basic.showString("" + input.temperature() + "Temperature(Celsius)" + input.temperature())
-        basic.showString("T")
+        basic.showString("" + (Gamen_list[0]))
     }
 })
 let American = 0
 let European = 0
 let Mivar1 = 0
 let JikanLock = 0
+let Gamen_list: string[] = []
 let MugenLock = 0
 let C2 = 0
 let C1 = 0
@@ -132,4 +150,5 @@ led.setBrightness(69)
 C1 = 24
 C2 = 0
 MugenLock = 1
-basic.showString("J")
+Gamen_list = ["M"]
+basic.showString("" + (Gamen_list[0]))

@@ -21,6 +21,12 @@ input.onButtonPressed(Button.A, function () {
             Gamen_list[0] = "S"
             basic.showString("S")
         }
+    } else if (ABlock == 2) {
+        Hito += 1
+        if (Hito == 58) {
+            Hito = 0
+        }
+        basic.showString("" + (text_list[Hito]))
     }
 })
 input.onSound(DetectedSound.Loud, function () {
@@ -129,22 +135,24 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         American = European
         basic.showString("" + C1 + ":" + C2 + "Clock")
     } else if (MugenLock == 2) {
-        // Compass
         basic.clearScreen()
         basic.showString("" + input.compassHeading() + "Compass" + input.compassHeading())
         basic.showString("" + (Gamen_list[0]))
     } else if (MugenLock == 3) {
-        // Temp
         basic.clearScreen()
         basic.showString("" + input.temperature() + "Celsius" + input.temperature())
         basic.showString("" + (Gamen_list[0]))
+    } else if (MugenLock == 6) {
+        ABlock = 2
     }
 })
 let American = 0
 let European = 0
 let Mivar1 = 0
 let JikanLock = 0
+let Hito = 0
 let ABlock = 0
+let text_list: string[] = []
 let Gamen_list: string[] = []
 let MugenLock = 0
 let C2 = 0
@@ -154,5 +162,6 @@ C1 = 24
 C2 = 0
 MugenLock = 1
 Gamen_list = ["M"]
+text_list = ["E", "T", "I", "A", "N", "M", "S", "U", "R", "W", "D", "K", "G", "O", "H", "V", "F", "#", "L", "#", "P", "J", "B", "X", "C", "Y", "Z", "Q", "#", "I", "5", "4", "#", "3", "?", "_", ".", "2", ",", ":", "+", ";", "*", "%", "#", "1", "6", "=", "/", "#", "#", "#", "#", "8", "7", "9", "0"]
 basic.showString("" + (Gamen_list[0]))
 ABlock = 1

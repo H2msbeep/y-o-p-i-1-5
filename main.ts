@@ -1,58 +1,60 @@
 input.onButtonPressed(Button.A, function () {
-    led.stopAnimation()
-    MugenLock += 1
-    if (MugenLock == 6) {
-        MugenLock = 1
-    }
-    if (MugenLock == 1) {
-        Gamen_list[0] = "M"
-        basic.showString("M")
-    } else if (MugenLock == 2) {
-        Gamen_list[0] = "C"
-        basic.showString("C")
-    } else if (MugenLock == 3) {
-        Gamen_list[0] = "T"
-        basic.showString("T")
-    } else if (MugenLock == 4) {
-        Gamen_list[0] = "D"
-        basic.showString("D")
-    } else {
-        Gamen_list[0] = "S"
-        basic.showString("S")
+    if (ABlock == 1) {
+        led.stopAnimation()
+        MugenLock += 1
+        if (MugenLock == 6) {
+            MugenLock = 1
+        }
+        if (MugenLock == 1) {
+            Gamen_list[0] = "M"
+            basic.showString("M")
+        } else if (MugenLock == 2) {
+            Gamen_list[0] = "C"
+            basic.showString("C")
+        } else if (MugenLock == 3) {
+            Gamen_list[0] = "T"
+            basic.showString("T")
+        } else if (MugenLock == 4) {
+            Gamen_list[0] = "D"
+            basic.showString("D")
+        } else {
+            Gamen_list[0] = "S"
+            basic.showString("S")
+        }
     }
 })
 input.onSound(DetectedSound.Loud, function () {
-    // Sound
     if (MugenLock == 5) {
         music.playTone(988, music.beat(BeatFraction.Half))
         music.playTone(988, music.beat(BeatFraction.Half))
     }
 })
 input.onButtonPressed(Button.B, function () {
-    led.stopAnimation()
-    MugenLock += -1
-    if (MugenLock == 0) {
-        MugenLock = 5
-    }
-    if (MugenLock == 1) {
-        Gamen_list[0] = "M"
-        basic.showString("M")
-    } else if (MugenLock == 2) {
-        Gamen_list[0] = "C"
-        basic.showString("C")
-    } else if (MugenLock == 3) {
-        Gamen_list[0] = "T"
-        basic.showString("T")
-    } else if (MugenLock == 4) {
-        Gamen_list[0] = "D"
-        basic.showString("D")
-    } else {
-        Gamen_list[0] = "S"
-        basic.showString("S")
+    if (ABlock == 1) {
+        led.stopAnimation()
+        MugenLock += -1
+        if (MugenLock == 0) {
+            MugenLock = 5
+        }
+        if (MugenLock == 1) {
+            Gamen_list[0] = "M"
+            basic.showString("M")
+        } else if (MugenLock == 2) {
+            Gamen_list[0] = "C"
+            basic.showString("C")
+        } else if (MugenLock == 3) {
+            Gamen_list[0] = "T"
+            basic.showString("T")
+        } else if (MugenLock == 4) {
+            Gamen_list[0] = "D"
+            basic.showString("D")
+        } else {
+            Gamen_list[0] = "S"
+            basic.showString("S")
+        }
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    // Dice
     if (MugenLock == 4) {
         basic.clearScreen()
         basic.showNumber(randint(1, 6))
@@ -62,10 +64,10 @@ input.onGesture(Gesture.Shake, function () {
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     if (MugenLock == 1) {
-        // Clock
         basic.showString("" + (Gamen_list[0]))
-        // Clock Setter
         if (JikanLock == 0) {
+            basic.clearScreen()
+            ABlock = 0
             basic.showString("Set the clock")
             basic.showNumber(C1)
             while (!(input.logoIsPressed())) {
@@ -111,9 +113,9 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
             Mivar1 = input.runningTime()
             JikanLock = 1
             basic.clearScreen()
+            ABlock = 1
         }
         European = Math.idiv(input.runningTime() - Mivar1, 60000)
-        // Check
         for (let index = 0; index < European - American; index++) {
             if (C2 == 59) {
                 C2 = -1
@@ -134,7 +136,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     } else if (MugenLock == 3) {
         // Temp
         basic.clearScreen()
-        basic.showString("" + input.temperature() + "Temperature(Celsius)" + input.temperature())
+        basic.showString("" + input.temperature() + "Celsius" + input.temperature())
         basic.showString("" + (Gamen_list[0]))
     }
 })
@@ -142,6 +144,7 @@ let American = 0
 let European = 0
 let Mivar1 = 0
 let JikanLock = 0
+let ABlock = 0
 let Gamen_list: string[] = []
 let MugenLock = 0
 let C2 = 0
@@ -152,3 +155,4 @@ C2 = 0
 MugenLock = 1
 Gamen_list = ["M"]
 basic.showString("" + (Gamen_list[0]))
+ABlock = 1

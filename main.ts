@@ -2,7 +2,7 @@ input.onButtonPressed(Button.A, function () {
     if (ABlock == 1) {
         led.stopAnimation()
         MugenLock += 1
-        if (MugenLock == 8) {
+        if (MugenLock == 9) {
             MugenLock = 1
         }
         if (MugenLock == 1) {
@@ -17,8 +17,10 @@ input.onButtonPressed(Button.A, function () {
             Gamen_list[0] = "S"
         } else if (MugenLock == 6) {
             Gamen_list[0] = "K"
-        } else {
+        } else if (MugenLock == 7) {
             Gamen_list[0] = "R"
+        } else {
+            Gamen_list[0] = "A"
         }
         basic.showString("" + (Gamen_list[0]))
     } else if (ABlock == 2) {
@@ -27,6 +29,10 @@ input.onButtonPressed(Button.A, function () {
             Hito = 56
         }
         basic.showString("" + (text_list[Hito]))
+    } else if (ABlock == 3) {
+        let list: number[] = []
+        list[Hito] = 1
+        Hito += 1
     }
 })
 input.onSound(DetectedSound.Loud, function () {
@@ -46,7 +52,7 @@ input.onButtonPressed(Button.B, function () {
         led.stopAnimation()
         MugenLock += -1
         if (MugenLock == 0) {
-            MugenLock = 7
+            MugenLock = 8
         }
         if (MugenLock == 1) {
             Gamen_list[0] = "M"
@@ -60,8 +66,10 @@ input.onButtonPressed(Button.B, function () {
             Gamen_list[0] = "S"
         } else if (MugenLock == 6) {
             Gamen_list[0] = "K"
-        } else {
+        } else if (MugenLock == 7) {
             Gamen_list[0] = "R"
+        } else {
+            Gamen_list[0] = "A"
         }
         basic.showString("" + (Gamen_list[0]))
     } else if (ABlock == 2) {
@@ -70,6 +78,12 @@ input.onButtonPressed(Button.B, function () {
             Hito = 0
         }
         basic.showString("" + (text_list[Hito]))
+    } else if (ABlock == 3) {
+        Risu[Hito] = 2
+        Hito += 1
+        if (Risu[0] == 2) {
+        	
+        }
     }
 })
 input.onGesture(Gesture.Shake, function () {
@@ -175,6 +189,17 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         Hito = 0
         basic.showString(".")
         basic.showString("" + (Gamen_list[0]))
+    } else if (MugenLock == 8) {
+        Switch += 1
+        if (Switch == 2) {
+            Switch = 0
+            ABlock = 1
+            basic.showString("A")
+        } else {
+            basic.clearScreen()
+            ABlock = 3
+            Hito = 0
+        }
     }
 })
 let Switch = 0
@@ -187,6 +212,7 @@ let Hito = 0
 let ABlock = 0
 let text_list: string[] = []
 let オリオンをなぞる: string[] = []
+let Risu: number[] = []
 let Gamen_list: string[] = []
 let MugenLock = 0
 let C2 = 0
@@ -196,7 +222,8 @@ C1 = 24
 C2 = 0
 MugenLock = 1
 Gamen_list = ["M"]
+Risu = [0]
 オリオンをなぞる = [""]
-text_list = ["E", "T", "I", "A", "N", "M", "S", "U", "R", "W", "D", "K", "G", "O", "H", "V", "F", "#", "L", "#", "P", "J", "B", "X", "C", "Y", "Z", "Q", "#", "I", "5", "4", "#", "3", "?", "_", ".", "2", ",", ":", "+", ";", "*", "%", "#", "1", "6", "=", "/", "#", "#", "#", "#", "8", "7", "9", "0"]
+text_list = ["E", "T", "I", "A", "N", "M", "S", "U", "R", "W", "D", "K", "G", "O", "H", "V", "F", "#", "L", "#", "P", "J", "B", "X", "C", "Y", "Z", "Q", "#", "#", "5", "4", "#", "3", "?", "_", ".", "2", ",", ":", "+", ";", "*", "%", "#", "1", "6", "=", "/", "#", "#", "#", "#", "8", "7", "9", "0"]
 basic.showString("" + (Gamen_list[0]))
 ABlock = 1

@@ -2,29 +2,29 @@ input.onButtonPressed(Button.A, function () {
     if (ABlock == 1) {
         led.stopAnimation()
         MugenLock += 1
-        if (MugenLock == 6) {
+        if (MugenLock == 8) {
             MugenLock = 1
         }
         if (MugenLock == 1) {
             Gamen_list[0] = "M"
-            basic.showString("M")
         } else if (MugenLock == 2) {
             Gamen_list[0] = "C"
-            basic.showString("C")
         } else if (MugenLock == 3) {
             Gamen_list[0] = "T"
-            basic.showString("T")
         } else if (MugenLock == 4) {
             Gamen_list[0] = "D"
-            basic.showString("D")
-        } else {
+        } else if (MugenLock == 5) {
             Gamen_list[0] = "S"
-            basic.showString("S")
+        } else if (MugenLock == 6) {
+            Gamen_list[0] = "K"
+        } else {
+            Gamen_list[0] = "R"
         }
+        basic.showString("" + (Gamen_list[0]))
     } else if (ABlock == 2) {
-        Hito += 1
-        if (Hito == 58) {
-            Hito = 0
+        Hito += -1
+        if (Hito == -1) {
+            Hito = 56
         }
         basic.showString("" + (text_list[Hito]))
     }
@@ -35,29 +35,41 @@ input.onSound(DetectedSound.Loud, function () {
         music.playTone(988, music.beat(BeatFraction.Half))
     }
 })
+input.onButtonPressed(Button.AB, function () {
+    if (ABlock == 2) {
+        オリオンをなぞる[軽くテンションMAX] = text_list[Hito]
+        軽くテンションMAX += 1
+    }
+})
 input.onButtonPressed(Button.B, function () {
     if (ABlock == 1) {
         led.stopAnimation()
         MugenLock += -1
         if (MugenLock == 0) {
-            MugenLock = 5
+            MugenLock = 7
         }
         if (MugenLock == 1) {
             Gamen_list[0] = "M"
-            basic.showString("M")
         } else if (MugenLock == 2) {
             Gamen_list[0] = "C"
-            basic.showString("C")
         } else if (MugenLock == 3) {
             Gamen_list[0] = "T"
-            basic.showString("T")
         } else if (MugenLock == 4) {
             Gamen_list[0] = "D"
-            basic.showString("D")
-        } else {
+        } else if (MugenLock == 5) {
             Gamen_list[0] = "S"
-            basic.showString("S")
+        } else if (MugenLock == 6) {
+            Gamen_list[0] = "K"
+        } else {
+            Gamen_list[0] = "R"
         }
+        basic.showString("" + (Gamen_list[0]))
+    } else if (ABlock == 2) {
+        Hito += 1
+        if (Hito == 57) {
+            Hito = 0
+        }
+        basic.showString("" + (text_list[Hito]))
     }
 })
 input.onGesture(Gesture.Shake, function () {
@@ -143,16 +155,38 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         basic.showString("" + input.temperature() + "Celsius" + input.temperature())
         basic.showString("" + (Gamen_list[0]))
     } else if (MugenLock == 6) {
-        ABlock = 2
+        Switch += 1
+        if (Switch == 2) {
+            Switch = 0
+            ABlock = 1
+            basic.showString("K")
+        } else {
+            basic.clearScreen()
+            ABlock = 2
+            basic.showString("" + (text_list[0]))
+        }
+    } else if (MugenLock == 7) {
+        basic.clearScreen()
+        Hito = 0
+        for (let index = 0; index < オリオンをなぞる.length; index++) {
+            basic.showString("" + (オリオンをなぞる[Hito]))
+            Hito += 1
+        }
+        Hito = 0
+        basic.showString(".")
+        basic.showString("" + (Gamen_list[0]))
     }
 })
+let Switch = 0
 let American = 0
 let European = 0
 let Mivar1 = 0
 let JikanLock = 0
+let 軽くテンションMAX = 0
 let Hito = 0
 let ABlock = 0
 let text_list: string[] = []
+let オリオンをなぞる: string[] = []
 let Gamen_list: string[] = []
 let MugenLock = 0
 let C2 = 0
@@ -162,6 +196,7 @@ C1 = 24
 C2 = 0
 MugenLock = 1
 Gamen_list = ["M"]
+オリオンをなぞる = [""]
 text_list = ["E", "T", "I", "A", "N", "M", "S", "U", "R", "W", "D", "K", "G", "O", "H", "V", "F", "#", "L", "#", "P", "J", "B", "X", "C", "Y", "Z", "Q", "#", "I", "5", "4", "#", "3", "?", "_", ".", "2", ",", ":", "+", ";", "*", "%", "#", "1", "6", "=", "/", "#", "#", "#", "#", "8", "7", "9", "0"]
 basic.showString("" + (Gamen_list[0]))
 ABlock = 1

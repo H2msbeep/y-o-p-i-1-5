@@ -190,15 +190,67 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         basic.showString(".")
         basic.showString("" + (Gamen_list[0]))
     } else if (MugenLock == 8) {
-        Switch += 1
-        if (Switch == 2) {
-            Switch = 0
-            ABlock = 1
-            basic.showString("A")
-        } else {
-            basic.clearScreen()
-            ABlock = 3
-            Hito = 0
+        basic.clearScreen()
+        ABlock = 1
+        Hito = 0
+        while (!(input.logoIsPressed())) {
+            if (input.buttonIsPressed(Button.A)) {
+                Risu[Hito] = 1
+                Hito += 1
+            }
+            if (input.buttonIsPressed(Button.B)) {
+                Risu[Hito] = 2
+                Hito += 1
+            }
+            if (Risu[0] == 1) {
+                basic.showString("E")
+                オリオンをなぞる[0] = "E"
+                if (Risu[1] == 1) {
+                    basic.showString("I")
+                    オリオンをなぞる[0] = "I"
+                    if (Risu[2] == 1) {
+                        basic.showString("S")
+                        オリオンをなぞる[0] = "S"
+                        if (Risu[3] == 1) {
+                            basic.showString("H")
+                            オリオンをなぞる[0] = "H"
+                            if (Risu[4] == 1) {
+                                basic.showString("5")
+                                オリオンをなぞる[0] = "5"
+                            } else if (Risu[4] == 2) {
+                                basic.showString("4")
+                                オリオンをなぞる[0] = "4"
+                            }
+                        } else if (Risu[3] == 2) {
+                            basic.showString("V")
+                            オリオンをなぞる[0] = "V"
+                            if (Risu[4] == 1) {
+                                basic.showString("$")
+                                オリオンをなぞる[0] = "$"
+                            } else if (Risu[4] == 2) {
+                                basic.showString("3")
+                                オリオンをなぞる[0] = "3"
+                            }
+                        }
+                    } else if (Risu[2] == 2) {
+                        basic.showString("U")
+                        オリオンをなぞる[0] = "U"
+                        if (Risu[3] == 1) {
+                            basic.showString("F")
+                            オリオンをなぞる[0] = "F"
+                        } else if (Risu[3] == 2) {
+                            basic.showString("#")
+                            オリオンをなぞる[0] = "#"
+                        }
+                    }
+                } else if (Risu[1] == 2) {
+                    basic.showString("A")
+                    オリオンをなぞる[0] = "A"
+                }
+            } else if (Risu[0] == 2) {
+                basic.showString("T")
+                オリオンをなぞる[0] = "T"
+            }
         }
     }
 })
